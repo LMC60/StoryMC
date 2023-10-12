@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste de Criminels</title>
+    <style>
+       
+            body {
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: monospace; /* Utilisation d'une police générique, ici "monospace" */
+            font-size: 24px; /* Taille de la police */
+        }
+        h1, ul, p {
+            font-size: 21px; /* Augmenter la taille de la police pour tous les éléments texte */
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .loader {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid #3498db;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+            margin-top: 20px;
+        }
+        .success {
+            font-size: 32px; /* Augmenter la taille de la police pour le message de succès */
+            color: green;
+            margin-top: 20px;
+        }
+        .loading-text {
+            font-size: 28px; /* Augmenter la taille de la police pour le texte de chargement */
+            margin-top: 40px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header-img {
+            width: 200px; /* Largeur de l'image */
+            height: auto; /* La hauteur sera ajustée en proportion à la largeur */
+            margin-bottom: 100px;
+            
+        }
+    </style>
+      <img src="FBI logo.png" alt="Logo" class="header-img">
+</head>
+<body>
+    <h1>Liste de Criminels</h1>
+    <ul>
+        <li>Royalmax</li>
+        <br>
+        <li>Pablo</li>
+        <br>
+        <li>Carlos</li>
+        <br>
+        <li>Jean-Mahmoud Enubuebuebue</li>
+        <br>
+    </ul>
+    <button onclick="showPopup()">Effacer les données</button>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <p>Voulez-vous supprimer les données de ces criminels ?</p>
+            <button onclick="deleteData()">Oui</button> 
+            <button onclick="closePopup()">Non</button>
+        </div>
+    </div>
+
+    <script>
+        function showPopup() {
+            document.getElementById('popup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        function deleteData() {
+    document.getElementById('popup').style.display = 'none';
+    document.body.innerHTML = '<div class="loader"></div><div class="loading-text">Suppression des données</div>';
+    setTimeout(function() {
+        document.body.innerHTML = '<div class="success">&#10004; Données Supprimées</div>';
+        
+        // Créer un bouton "Quitter la page"
+        var quitButton = document.createElement('button');
+        quitButton.textContent = 'Quitter la page';
+        quitButton.style.marginTop = '100px'; // Ajouter de la marge en haut du bouton
+        
+        quitButton.onclick = function() {
+            window.close(); // Cette fonction ferme la page
+        };
+        
+        // Ajouter le bouton au corps du document
+        document.body.appendChild(quitButton);
+    }, 3000);
+}
+    </script>
+</body>
+</html>
