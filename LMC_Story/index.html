@@ -112,11 +112,12 @@
         // Créer un bouton "Quitter la page"
         var quitButton = document.createElement('button');
         quitButton.textContent = 'Quitter la page';
-        quitButton.style.marginTop = '100px'; // Ajouter de la marge en haut du bouton
+        quitButton.style.marginTop = '50px'; // Ajouter de la marge en haut du bouton
         
-        quitButton.onclick = function() {
-            window.close(); // Cette fonction ferme la page
-        };
+        quitButton.onclick = function quitPage() {
+    window.location.href = "https://www.google.com"; // Redirige vers la page Google
+}
+
         
         // Ajouter le bouton au corps du document
         document.body.appendChild(quitButton);
